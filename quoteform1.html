@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Application Form</title>
+    <link rel="stylesheet" href="styles1.css">
+    <script>
+        let selectedCategory = '';
+
+        function selectCategory(category) {
+            selectedCategory = category;
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+            });
+            document.getElementById(category).classList.add('selected');
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const needs = document.getElementById('needs').value;
+
+            if (!selectedCategory) {
+                alert('Please select your category.');
+                return;
+            }
+
+            if (!name) {
+                alert('Please fill your name.');
+                return;
+            }
+			
+			if (!phone) {
+                alert('Please fill your phone number.');
+                return;
+            }
+
+            // Example of output; you can modify this to send data to a server
+            alert(`Category: ${selectedCategory}\nName: ${name}\nPhone: ${phone}\nNeeds: ${needs}`);
+            // Clear the form after submission
+            document.getElementById('quoteForm').reset();
+            selectedCategory = '';
+            const buttons = document.querySelectorAll('.category-button');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 align= "center">Request For Quote</h1>
+		<P ALIGN="Center"><IMG SRC="profilesai.jpeg" width="547" height="254"></P>
+
+        <div class="section">
+            <h3>Please Select Your Category</h3>
+            <div class="button-group">
+                <label><button id="Industrial" class="category-button" onclick="selectCategory('Industrial')">Industrial</button></label><br>
+                <label><button id="Residential" class="category-button" onclick="selectCategory('Residential')">Residential</button></label><br>
+                <label><button id="Commercial" class="category-button" onclick="selectCategory('Commercial')">Commercial</button></label><br>
+                <label><button id="Infrastructure" class="category-button" onclick="selectCategory('Infrastructure')">Infrastructure</button></label><br>
+				<label><button id="Healthcare Construction" class="category-button" onclick="selectCategory('Healthcare Construction')">Healthcare Construction</button></label><br>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Please Fill Your Details</h3>
+            <form id="quoteForm" onsubmit="event.preventDefault(); submitForm();">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your name"></textarea>
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phhone number"></textarea>
+            </form>
+        </div>
+
+        <div class="section">
+            <h3>Anything You Need</h3>
+            <textarea id="needs" name="needs" rows="4" cols="50" placeholder="Type your message here..."></textarea>
+        </div>
+        
+        <button class= "submit-button" onclick="submitForm()">Get a Quote</button>
+    </div>
+	
+	<!-- Footer Section for Copyright -->
+    <footer>
+	<link rel="stylesheet" href="styles2.css">
+        <p>&copy; <span id="2024"></span> Sai Asia Builders SDN.BHD<br>All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Automatically set the current year for the copyright
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
