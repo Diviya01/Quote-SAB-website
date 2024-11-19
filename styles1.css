@@ -18,6 +18,16 @@ h1, h3 {
     color: #333;
 }
 
+.image-container {
+    max-width: 600px; /* Set a max width for the container */
+    margin: 0 auto; /* Center the container */
+  }
+  
+img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: auto;
+}
+
 .section {
     margin-bottom: 20px;
 }
